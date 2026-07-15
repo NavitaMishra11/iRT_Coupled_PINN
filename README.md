@@ -12,7 +12,7 @@ These parameters are used exclusively in the loss function of the PINN. Separate
 
 <img width="504" height="346" alt="image" src="https://github.com/user-attachments/assets/9ee15fe5-78bc-44b5-8bf1-11d33bd99b8c" />
 
-## Loss Functions
+## Loss Function
 
 Each residual is the difference between the left-hand and right-hand sides of the corresponding tumor-immune dynamics equations, evaluated at the collocation points, and its loss is the mean squared residual. The total loss function comprises both the physics loss for each equation and the initial loss for each initial condition.
 
