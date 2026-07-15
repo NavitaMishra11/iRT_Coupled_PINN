@@ -2,4 +2,3 @@
 
 Initial Conditions
 
-![Uploading image.png…]()
