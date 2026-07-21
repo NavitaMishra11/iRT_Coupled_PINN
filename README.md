@@ -27,6 +27,12 @@ The physics informed neural network is a fully connected network mapping time to
 
 For the collocation of points, I used 1000 values of t uniformly spaced on [0,100], with requires_grad = True, so that the d/dt can be taken by autograd. For the training loop, there are 20,000 epochs, or training rounds, with a learning rate of $10^{-3}$. Each epoch performs a forward pass, then computes the five derivatives, evaluates the initial condition loss in a separate forward pass, and takes a single gradient step. During these epochs, the total loss is calculated, and over time, that loss gets smaller and smaller, demonstrating that the network is actually learning based on the governing equations.
 
+## Fractionation Scheme
+
+Now, the PINN is able to predict the fractionation and scheduling of the radioation as well. The spikes throughout the graph show the instantaneous jumps caused by the administration of the radiation dose. The graph also shows the two-week follow up after the treatment and how the tumor cells and lymphocyte populations change during those weeks following. This was achieved by creating a scheduling and radiation dosage function, whcih are then utilized in the for loop. The scheduling function takes in the number of doses, the start day, and whether or not the dose is administered on weekends. In order to achieve this shape in the graph, the total timeline is cut into segments, where the PINN is now training for each segment, which can be seen now by the new for loop that was implemented. 
+<img width="989" height="490" alt="image" src="https://github.com/user-attachments/assets/9287e064-47f6-4dca-bcec-893f87b7b557" />
+
+
 ### Current Files
 
 The files in the repository show my gradual journey to developing the 5 ODE coupled PINN. I started off with just the one Damaged Tumors equation and then slowly added the rest of the tumor-immune dynamic equations in order to develop the full PINN. Next, I am working on how to incorporate a fractionstion schedule into my PINN.
